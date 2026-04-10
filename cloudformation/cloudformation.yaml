@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Avance Proy Final - DevOps - Cesar & Daniel
+Resources:
+  BucketS3:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'devops-stf-${AWS::AccountId}'
+  ServidorWeb:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-00de3875b03809ec5
+      IamInstanceProfile: LabInstanceProfile
+      Tags:
+        - Key: Name
+          Value: devops-servidor-web
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          apt update -y
+          apt install docker.io -y
+          service docker start
+  ServidorApp:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-00de3875b03809ec5
+      IamInstanceProfile: LabInstanceProfile
+      Tags:
+        - Key: Name
+          Value: devops-servidor-app
