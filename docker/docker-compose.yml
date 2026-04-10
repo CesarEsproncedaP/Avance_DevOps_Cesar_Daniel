@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./logs:/var/log/nginx
+    networks:
+      - devops-network
+
+  monitor:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    networks:
+      - devops-network
+
+networks:
+  devops-network:
+    driver: bridge
