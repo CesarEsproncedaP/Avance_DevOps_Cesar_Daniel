@@ -3,7 +3,7 @@
 **Universidad Tecmilenio**  
 **Materia:** Fundamentos de DevOps  
 **Docente:** Juan Manuel Cepeda Barragán  
-**Fecha:** 10 de Abril del 2026
+**Fecha:** 10 de Abril del 2026 (Actualizado para el proy final el 8 de Mayo del 2026)
 
 ---
 
@@ -62,6 +62,21 @@ Script Python con Boto3 que conecta a AWS en `us-east-1` y ejecuta 4 funciones:
 | `listar_instancias()` | Muestra ID, tipo e estado de todas las instancias |
 | `listar_buckets()` | Lista buckets S3 con sus objetos y tamaños en bytes |
 | `generar_reporte()` | Genera y guarda un reporte JSON en `/home/ubuntu/proyecto/logs/reporte.json` |
+
+### scripts/s3_upload.py
+Script Python con Boto3 que automatiza la carga de archivos a S3:
+- Crea un archivo de prueba en `/home/ubuntu/proyecto/logs/prueba.txt`
+- Sube el archivo al bucket `devops-proyfinal-cesaresp` en `us-east-1`
+- Confirma la carga exitosa con un mensaje en consola
+
+### scripts/dynamodb_ops.py
+Script Python con Boto3 que realiza operaciones CRUD en DynamoDB:
+| Operación | Descripción |
+|---|---|
+| `put_item` | Inserta registros con id, nombre y rol |
+| `get_item` | Lee un registro por su id |
+| `update_item` | Modifica el campo rol de un registro |
+| `delete_item` | Elimina un registro por su id |
 
 ### .gitignore
 Excluye del repositorio: `*.log`, `*.env`, `__pycache__/`, `.DS_Store`, `node_modules/`
